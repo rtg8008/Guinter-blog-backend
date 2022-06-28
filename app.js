@@ -10,7 +10,7 @@ app.use(express.json());
 app.get('/', async (req, res) => {
   
   let result = await knex('first_table').select('*')
-  res.status(200).json('something')
+  res.status(200).json(result)
 
 })
 
