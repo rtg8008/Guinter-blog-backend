@@ -36,12 +36,13 @@ app.get('/posts/:id', async (req, res) => {
   {
     res.status(404).json('this did not work');
   }
-  
   let result = await knex('posts').select('*').where({user_id: req.params.id})
   res.status(200).json(result)
 })
 app.post('/posts', async (req, res) => {
-  
+  if (req.body.content.length > 250){
+    res.status(400).json('to long of a post');
+  }
   let temp = await knex('posts').insert(req.body);
   let result = await knex('posts').select('*').where({user_id: req.body.user_id})
   res.status(201).json(result)
@@ -50,6 +51,9 @@ app.patch('/posts/:postid', async (req, res) => {
   if (req.params.postid === undefined)
   {
     res.status(404).json('this did not work');
+  }
+  if (req.body.content.length > 250){
+    res.status(400).json('to long of a post');
   }
   console.log(`patching post id: ${req.params.postid} with ${req.body}`)
   await knex('posts').update(req.body).where({id: req.params.postid})
