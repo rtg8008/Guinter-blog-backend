@@ -23,6 +23,11 @@ app.get('/posts', async (req, res) => {
   let result = await knex('posts').select('*')
   res.status(200).json(result)
 })
+app.get('/posts/:id', async (req, res) => {
+  
+  let result = await knex('posts').select('*').where({id: req.params.id})
+  res.status(200).json(result)
+})
 
 app.post('/members', async (req, res) => {
   console.log(req.body);
