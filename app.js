@@ -32,11 +32,16 @@ app.get('/posts', async (req, res) => {
   res.status(200).json(result)
 })
 app.get('/posts/:id', async (req, res) => {
+  if (req.params.postid === undefined)
+  {
+    res.status(404).json('this did not work');
+  }
   
   let result = await knex('posts').select('*').where({user_id: req.params.id})
   res.status(200).json(result)
 })
 app.post('/posts', async (req, res) => {
+  
   let temp = await knex('posts').insert(req.body);
   let result = await knex('posts').select('*').where({user_id: req.body.user_id})
   res.status(201).json(result)
