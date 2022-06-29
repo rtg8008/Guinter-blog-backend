@@ -29,7 +29,7 @@ app.get('/posts/:id', async (req, res) => {
   res.status(200).json(result)
 })
 app.post('/posts', async (req, res) => {
-  let temp = await knex('members').insert(req.body);
+  let temp = await knex('posts').insert(req.body);
   res.status(201).json(`successfully posted ${req.body}`)
 })
 
