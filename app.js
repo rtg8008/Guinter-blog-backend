@@ -5,6 +5,10 @@ const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV||'dev
 
 require('dotenv').config()
 console.log(process.env)
+app.use(cors({
+  origin: '*',
+  methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}));
 app.use(express.json());
 
 app.get('/', async (req, res) => {
