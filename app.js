@@ -22,7 +22,12 @@ app.get('/posts', async (req, res) => {
   
   let result = await knex('posts').select('*')
   res.status(200).json(result)
-
 })
 
+app.post('/members', async (req, res) => {
+  console.log(req.body);
+  // {first_name: 'ryan', last_name: 'guinter', username: 'rtg', password: 'password'},
+  let temp = await knex('members').insert(req.body);
+  res.status(201).json(`successfully posted ${req.body}`)
+})
 app.listen(port, () => console.log(`listening on port ${port}`))
