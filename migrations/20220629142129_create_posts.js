@@ -7,7 +7,7 @@ exports.up = function(knex) {
   return knex.schema.createTable('posts', (table)=>{
     table.increments('id');
     table.string('title',128);
-    table.string('content',256);
+    table.string('content',2048);
     table.string('date', 128);
     table.integer('user_id');
     table.foreign('user_id').references('members.id')
