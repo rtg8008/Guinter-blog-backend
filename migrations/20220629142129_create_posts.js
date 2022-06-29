@@ -3,6 +3,7 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
+  
   return knex.schema.createTable('posts', (table)=>{
     table.increments('id');
     table.string('title',128);
@@ -21,6 +22,6 @@ exports.down = function(knex) {
   return knex.schema.alterTable('posts', (table) => {
     table.dropForeign('user_id');
   }).then(()=>{
-    knex.schema.dropTableIfExists('first_table');
+    knex.schema.dropTableIfExists('posts');
   })
 };

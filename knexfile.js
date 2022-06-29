@@ -6,8 +6,14 @@
 module.exports = {
 
   development: {
-    client: 'pg',
-    connection: (process.env.DATABASE_URL || process.env.POSTGRES_URI) +'?ssl=no-verify',
+    client: 'postgresql',
+    connection: {
+      host: '127.0.0.1',
+      password: 'docker',
+      user: 'postgres', //default postgres user
+      port: 5432,
+      database: 'blog_database' // expected database name to be created
+    }
   },
 
   staging: {
