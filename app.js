@@ -12,9 +12,15 @@ app.use(cors({
 }));
 app.use(express.json());
 
-app.get('/', async (req, res) => {
+app.get('/members', async (req, res) => {
   
-  let result = await knex('first_table').select('*')
+  let result = await knex('members').select('*')
+  res.status(200).json(result)
+
+})
+app.get('/posts', async (req, res) => {
+  
+  let result = await knex('posts').select('*')
   res.status(200).json(result)
 
 })

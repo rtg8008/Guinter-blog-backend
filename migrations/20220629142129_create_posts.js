@@ -3,9 +3,8 @@
  * @returns { Promise<void> }
  */
 exports.up = function(knex) {
-  return knex.schema.createTable('members', (table)=>{
+  return knex.schema.createTable('posts', (table)=>{
     table.increments('id');
-    table.string('first_name',128);
     table.string('title',128);
     table.string('content',256);
     table.integer('user_id');
@@ -19,7 +18,7 @@ exports.up = function(knex) {
  * @returns { Promise<void> }
  */
 exports.down = function(knex) {
-  return knex.schema.alterTable('members', (table) => {
+  return knex.schema.alterTable('posts', (table) => {
     table.dropForeign('user_id');
   }).then(()=>{
     knex.schema.dropTableIfExists('first_table');
