@@ -41,7 +41,7 @@ app.get('/posts/:id', async (req, res) => {
   res.status(200).json(result)
 })
 app.post('/posts', async (req, res) => {
-  if (req.body.content.length > 250){
+  if (req.body.content.length > 2048){
     res.status(400).json('to long of a post');
     return;
   }
@@ -58,8 +58,8 @@ app.patch('/posts/:postid', async (req, res) => {
     return;
   }
   console.log(req.body.content);
-  if (req.body.content.length > 250){
-    res.status(400).json('to long of a post');
+  if (req.body.content.length > 2048){
+    res.status(400).json('to0 long of a post');
     return;
   }
   console.log(`patching post id: ${req.params.postid} with ${req.body}`)
