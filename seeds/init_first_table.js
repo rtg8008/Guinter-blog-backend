@@ -6,15 +6,8 @@ exports.seed = async function(knex) {
   // Deletes ALL existing entries
   await knex('first_table').del()
   await knex('first_table').insert([
-    {name: 'ryan'},
-    {name: 'albert'},
-    {name: 'george'},
-    {name: 'zach'},
-    {name: 'mike'},
-    {name: 'fred'},
-    {name: 'thomas'},
-    {name: 'john'},
-    {name: 'phil'},
-
+    {first_name: 'ryan', last_name: 'guinter', username: 'rtg', password: 'password'},
+    {first_name: 'naruto', last_name: 'uzimaki', username: 'ramen', password: 'ramen'},
+    {first_name: 'monkey', last_name: 'luffy', username: 'food', password: 'food'},
   ]);
 };
