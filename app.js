@@ -42,6 +42,10 @@ app.post('/posts', async (req, res) => {
   res.status(201).json(result)
 })
 app.patch('/posts/:postid', async (req, res) => {
+  if (req.params.postid === undefined)
+  {
+    res.status(404).json('this did not work');
+  }
   console.log(`patching post id: ${req.params.postid} with ${req.body}`)
   await knex('posts').update(req.body).where({id: req.params.postid})
   let result = await knex('posts').select('*').where({user_id: req.body.user_id})
