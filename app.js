@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 3000;
 const knex = require('knex')(require('./knexfile.js')[process.env.NODE_ENV||'development']);
+const cors = require('cors');
 
 require('dotenv').config()
 console.log(process.env)
