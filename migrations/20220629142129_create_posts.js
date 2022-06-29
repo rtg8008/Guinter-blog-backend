@@ -8,6 +8,7 @@ exports.up = function(knex) {
     table.increments('id');
     table.string('title',128);
     table.string('content',256);
+    table.string('date', 256);
     table.integer('user_id');
     table.foreign('user_id').references('members.id')
 
@@ -21,7 +22,8 @@ exports.up = function(knex) {
 exports.down = function(knex) {
   return knex.schema.alterTable('posts', (table) => {
     table.dropForeign('user_id');
-  }).then(()=>{
-    knex.schema.dropTableIfExists('posts');
+  })
+  .then(()=>{
+    return knex.schema.dropTableIfExists('posts');
   })
 };
