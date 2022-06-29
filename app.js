@@ -45,6 +45,14 @@ app.post('/posts', async (req, res) => {
     res.status(400).json('to long of a post');
     return;
   }
+  if (req.body.title.length > 128){
+    res.status(400).json('to long of a post');
+    return;
+  }
+  if (req.body.date.length > 128){
+    res.status(400).json('to long of a post');
+    return;
+  }
   console.log(req.body.content);
 
   let temp = await knex('posts').insert(req.body);
@@ -55,6 +63,14 @@ app.patch('/posts/:postid', async (req, res) => {
   if (req.params.postid === undefined)
   {
     res.status(404).json('this did not work');
+    return;
+  }
+  if (req.body.title.length > 128){
+    res.status(400).json('to long of a post');
+    return;
+  }
+  if (req.body.date.length > 128){
+    res.status(400).json('to long of a post');
     return;
   }
   console.log(req.body.content);
