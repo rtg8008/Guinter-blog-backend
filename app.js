@@ -28,6 +28,10 @@ app.get('/posts/:id', async (req, res) => {
   let result = await knex('posts').select('*').where({id: req.params.id})
   res.status(200).json(result)
 })
+app.post('/posts', async (req, res) => {
+  let temp = await knex('members').insert(req.body);
+  res.status(201).json(`successfully posted ${req.body}`)
+})
 
 app.post('/members', async (req, res) => {
   console.log(req.body);
