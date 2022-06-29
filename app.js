@@ -32,7 +32,7 @@ app.get('/posts', async (req, res) => {
   res.status(200).json(result)
 })
 app.get('/posts/:id', async (req, res) => {
-  if (req.params.postid === undefined)
+  if (req.params.id === undefined)
   {
     res.status(404).json('this did not work');
   }
